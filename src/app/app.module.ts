@@ -13,6 +13,8 @@ import { AvailabilityComponent } from './pages/availability/availability.compone
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
 import { IssueBookComponent } from './pages/issue-book/issue-book.component';
+import { ReturnBookComponent } from './pages/return-book/return-book.component';
+import { BooksComponent } from './pages/books/books.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { IssueBookComponent } from './pages/issue-book/issue-book.component';
     AuthLayoutComponent,
     AvailabilityComponent,
     IssueBookComponent,
+    ReturnBookComponent,
+    BooksComponent,
 
   ],
   providers: [],

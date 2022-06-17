@@ -98,8 +98,8 @@
     <div class="col">
       <div class="card bg-default shadow mt--5">
         <div class="card-header bg-transparent border-0">
-          <h3 class="text-white mb-0 float-left">Card tables</h3>
-          <button type="button" class="btn btn-info  float-right btn-danger" (click)="openModal()">Issue Book</button>
+          <h3 class="text-white mb-0 float-left">Books Details</h3>
+          <button type="button" class="btn btn-info  float-right btn-danger" (click)="openModal()">Register Book</button>
         </div>
 
 
@@ -107,14 +107,14 @@
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                       <div class="modal-header">
-                            <h4 class="modal-title">Issue Book</h4>
+                            <h4 class="modal-title">Books Table</h4>
                             <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
                       </div>
                  <div class="modal-body">
                   <div class="form-group">
                     <div class="row mb-3">
                       <div class="col-10">
-                        <input type="text" placeholder="Book Id" class="form-control" required>
+                        <input type="text" placeholder="Book Id" class="form-control" name="bookId" required>
                       </div>
                       <div class="col-1">
                         <button class="btn btn-dark"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -123,37 +123,39 @@
 
                     <div class="row mb-3">
                       <div class="col-10">
-                        <input type="text" placeholder="Book Name" class="form-control" readonly>
+                        <input type="text" placeholder="Book Name" name="bookName" class="form-control" >
                       </div>
                       <div class="col-2"></div>
                     </div>
 
                     <div class="row mb-3">
                       <div class="col-10">
-                        <input type="text" placeholder="Author Name" class="form-control" readonly>
+                        <input type="text" placeholder="Author Name" name="authorName" class="form-control" >
                       </div>
                       <div class="col-2"></div>
                     </div>
 
                     <div class="row mb-3">
                       <div class="col-10">
-                        <input type="text" placeholder="Issue Date" class="form-control" onfocus="(this.type='date')">
+                        <input type="number" placeholder="Publish year" name="publishYear" class="form-control" >
                       </div>
                       <div class="col-2"></div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mb-3">
                       <div class="col-10">
-                        <input type="text" placeholder="Due Date" class="form-control" onfocus="(this.type='date')">
+                        <input type="number" placeholder="Price" name="price" class="form-control" >
                       </div>
                       <div class="col-2"></div>
                     </div>
+
+
 
 
                   </div>
                  </div>
                       <div class="modal-footer">
-                            <button type="button" class="btn btn-success" (click)="onCloseHandled()" >Issue Book</button>
+                            <button type="button" class="btn btn-success" (click)="onCloseHandled()" >Register</button>
                             <button type="button" class="btn btn-danger" (click)="onCloseHandled()" >Close</button>
                       </div>
               </div>

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-issue-book',
-  templateUrl: './issue-book.component.html',
-  styleUrls: ['./issue-book.component.scss']
+  selector: 'app-books',
+  templateUrl: './books.component.html',
+  styleUrls: ['./books.component.scss']
 })
-export class IssueBookComponent implements OnInit {
+export class BooksComponent implements OnInit {
   display = "none";
 
   date1 = new Date();
@@ -19,6 +19,7 @@ export class IssueBookComponent implements OnInit {
   issuedate = '';
   FinalMonth:any;
   FinalDay:any;
+
 
   constructor() { }
 
@@ -36,9 +37,7 @@ export class IssueBookComponent implements OnInit {
     }
 
     this.TodayDate = this.currentYear+ "-"+ this.FinalMonth+ "-"+ this.FinalDay;
-
   }
-
 
   openModal() {
     this.display = "block";
@@ -47,4 +46,5 @@ export class IssueBookComponent implements OnInit {
   onCloseHandled() {
     this.display = "none";
   }
+
 }

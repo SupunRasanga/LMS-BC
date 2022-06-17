@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   email: string = '';
   password: string = '';
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {
   }
@@ -28,7 +29,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       alert('Please enter Password');
     }
 
-    this.auth.login(this.email, this.password);
+    // this.auth.login(this.email, this.password);
+    localStorage.setItem('userEmail', this.email);
+    this.router.navigate(['/dashboard']);
 
     this.email = '';
     this.password = '';
