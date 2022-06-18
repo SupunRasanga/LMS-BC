@@ -11,8 +11,10 @@ export const environment = {
     storageBucket: "library-management-syste-64fd0.appspot.com",
     messagingSenderId: "760240631942",
     appId: "1:760240631942:web:6ef629e42374464b43a107",
-    measurementId: "G-GNJ0186RH1"
-  }
+    measurementId: "G-GNJ0186RH1",
+  },
+
+  baseAPIUrl: 'https://library-management-syste-64fd0-default-rtdb.firebaseio.com'
 };
 
 /*
