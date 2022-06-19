@@ -31,7 +31,7 @@ export class BooksComponent implements OnInit {
   //Pagination
   collectionSize: number = 0;
   page: number = 1;
-  pageSize: number = 2;
+  pageSize: number = 5;
 
   loading:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
   loading$:Observable<boolean>;

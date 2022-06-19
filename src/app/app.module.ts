@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { IssueBookComponent } from './pages/issue-book/issue-book.component';
 import { ReturnBookComponent } from './pages/return-book/return-book.component';
 import { BooksComponent } from './pages/books/books.component';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { BooksComponent } from './pages/books/books.component';
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    NgbPaginationModule, NgbAlertModule
   ],
   declarations: [
     AppComponent,

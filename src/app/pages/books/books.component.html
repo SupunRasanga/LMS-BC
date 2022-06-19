@@ -238,7 +238,7 @@
                 </td>
               </tr> -->
 
-              <tr *ngFor="let item of bookList">
+              <tr *ngFor="let item of bookList | slice: (page - 1) * pageSize : page * pageSize">
                 <td>{{item.bookId}}</td>
                 <td>{{item.bookName}}</td>
                 <td>{{item.authorName}}</td>
@@ -252,6 +252,16 @@
 
             </tbody>
           </table>
+
+          <div class="float-left">
+            <b>{{ collectionSize }} Records Found!</b>
+        </div>
+
+        <div class="float-right">
+            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="collectionSize">
+            </ngb-pagination>
+        </div>
+
         </div>
         <!-- <div class="card-footer py-4 bg-dark">
           <nav aria-label="...">
@@ -279,14 +289,9 @@
           </nav>
         </div> -->
 
-        <div class="float-left">
-                <b>{{ collectionSize }} Records Found!</b>
-            </div>
 
-            <div class="float-right">
-                <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="collectionSize">
-                </ngb-pagination>
-            </div>
+
+
 
 
 
