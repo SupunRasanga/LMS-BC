@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -13,16 +13,20 @@ import { AvailabilityComponent } from './pages/availability/availability.compone
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
 import { IssueBookComponent } from './pages/issue-book/issue-book.component';
-
+import { ReturnBookComponent } from './pages/return-book/return-book.component';
+import { BooksComponent } from './pages/books/books.component';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ComponentsModule,
     NgbModule,
     RouterModule,
+    NgbPaginationModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
@@ -32,6 +36,8 @@ import { IssueBookComponent } from './pages/issue-book/issue-book.component';
     AuthLayoutComponent,
     AvailabilityComponent,
     IssueBookComponent,
+    ReturnBookComponent,
+    BooksComponent,
 
   ],
   providers: [],

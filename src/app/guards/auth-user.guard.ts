@@ -12,9 +12,11 @@ export class AuthUserGuard implements CanActivate{
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | boolean {
+    state: RouterStateSnapshot):  boolean {
 
-    if (localStorage.getItem('userEmail') != '') {
+      const emailStorage  =localStorage.getItem('userEmail');
+
+    if (emailStorage != '') {
 
       return true;
     } else {
@@ -23,7 +25,7 @@ export class AuthUserGuard implements CanActivate{
       alert("Disabled");
       return false;
     }
-
+      //return false;
   }
 
 }
