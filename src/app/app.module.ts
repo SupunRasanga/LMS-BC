@@ -16,6 +16,7 @@ import { IssueBookComponent } from './pages/issue-book/issue-book.component';
 import { ReturnBookComponent } from './pages/return-book/return-book.component';
 import { BooksComponent } from './pages/books/books.component';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { MembersComponent } from './pages/members/members.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
     IssueBookComponent,
     ReturnBookComponent,
     BooksComponent,
+    MembersComponent,
 
   ],
   providers: [],

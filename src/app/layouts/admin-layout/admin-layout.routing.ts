@@ -9,6 +9,7 @@ import { AvailabilityComponent } from 'src/app/pages/availability/availability.c
 import { IssueBookComponent } from 'src/app/pages/issue-book/issue-book.component';
 import { ReturnBookComponent } from 'src/app/pages/return-book/return-book.component';
 import { BooksComponent } from 'src/app/pages/books/books.component';
+import { MembersComponent } from 'src/app/pages/members/members.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent,canActivate : [AuthUserGuard] },
@@ -20,4 +21,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'issue',          component: IssueBookComponent, canActivate : [AuthUserGuard] },
     { path: 'return',         component: ReturnBookComponent, canActivate: [AuthUserGuard]},
     { path: 'books',          component: BooksComponent, canActivate: [AuthUserGuard]},
+    { path: 'members',        component: MembersComponent, canActivate: [AuthUserGuard]},
 ];

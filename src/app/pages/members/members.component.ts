@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { BookService } from 'src/app/services/book.service';
+import { MemberService } from 'src/app/services/member.service';
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.scss']
+  selector: 'app-members',
+  templateUrl: './members.component.html',
+  styleUrls: ['./members.component.scss']
 })
-export class BooksComponent implements OnInit {
+export class MembersComponent implements OnInit {
   display = "none";
 
   date1 = new Date();
@@ -23,8 +23,8 @@ export class BooksComponent implements OnInit {
   FinalMonth:any;
   FinalDay:any;
 
-  bookForm!:FormGroup
-  bookList: any[] = [];
+  memberForm!:FormGroup
+  memberList: any[] = [];
   isUpdate:boolean=false;
   selectedId:string;
 
@@ -36,15 +36,17 @@ export class BooksComponent implements OnInit {
   loading:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
   loading$:Observable<boolean>;
 
-  constructor( private fb: FormBuilder,private bookService:BookService) { }
+
+  constructor(private fb: FormBuilder,private memberService:MemberService) { }
 
   initForm(): void {
-    this.bookForm = this.fb.group({
-      bookId: ['', [Validators.required]],
-      bookName: ['', [Validators.required]],
-      authorName: ['', [Validators.required]],
-      publishYear: ['', [Validators.required]],
-      price: ['', [Validators.required]]
+    this.memberForm = this.fb.group({
+      memberId: ['', [Validators.required]],
+      memberFullName: ['', [Validators.required]],
+      age: ['', [Validators.required]],
+      gender: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      contactNo: ['', [Validators.required]]
     });
   }
 
@@ -77,7 +79,7 @@ export class BooksComponent implements OnInit {
   }
 
   onSaveOrUpdate(): void {
-    if (this.bookForm.invalid){
+    if (this.memberForm.invalid){
       alert('Please fill required fields');
       return;
   }
@@ -85,45 +87,46 @@ export class BooksComponent implements OnInit {
 
   if(this.isUpdate){
 //Update Record
-this.bookService.update(this.bookForm.value,this.selectedId).subscribe(res=>{
+this.memberService.update(this.memberForm.value,this.selectedId).subscribe(res=>{
        this.getList();
        this.loading.next(false);
        alert('Record has been updated.');
-       this.bookForm.reset();
+       this.memberForm.reset();
 
 });
 
   }else{
 //Save Record
-    this.bookService.create(this.bookForm.value).subscribe(res=>{
-      this.bookForm.reset();
+    this.memberService.create(this.memberForm.value).subscribe(res=>{
+      this.memberForm.reset();
       this.getList();
       this.loading.next(false);
     },error =>{
       //alert('Error occured when saving data.\n' + error);
-      alert('This Book already exist');
-      this.bookForm.reset();
+      alert('This member already exist');
+      this.memberForm.reset();
     },()=>{
       console.log('completed');
     })
     }
   }
     getList():void{
-      this.bookService.getAll().subscribe(res => {
-        this.bookList = res;
-        this.collectionSize = this.bookList.length;
+      this.memberService.getAll().subscribe(res => {
+        this.memberList = res;
+        this.collectionSize = this.memberList.length;
       } );
     }
-    onUpdate(book:any):void{
+    onUpdate(member:any):void{
       this.openModal();
       this.isUpdate=true,
-      this.selectedId=book.id,
-      this.bookForm.patchValue({
-        bookId:book.bookId,
-        bookName:book.bookName,
-        authorName:book.authorName,
-        publishYear:book.publishYear,
-        price:book.price,
+      this.selectedId=member.id,
+      this.memberForm.patchValue({
+        memberId:member.memberId,
+        memberFullName:member.memberFullName,
+        age:member.age,
+        gender:member.gender,
+        address:member.address,
+        contactNo:member.contactNo
       });
     }
 
@@ -131,7 +134,7 @@ onDelete(id:string):void{
   let isConfirm : boolean=confirm('Are you want to delete this Record?');
 
   if(isConfirm){
-    this.bookService.delete(id).subscribe(res =>{
+    this.memberService.delete(id).subscribe(res =>{
       console.log(res);
       this.getList();
   })
@@ -141,7 +144,7 @@ onDelete(id:string):void{
       this.isUpdate = false;
       this.selectedId = '';
 
-      this.bookForm.reset();
+      this.memberForm.reset();
 
     }
 
