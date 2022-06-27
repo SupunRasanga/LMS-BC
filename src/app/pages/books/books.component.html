@@ -114,40 +114,33 @@
                  <div class="modal-body">
                   <div class="form-group">
                     <div class="row mb-3">
-                      <div class="col-10">
-                        <input type="text" placeholder="Book Id" formControlName="bookId"  class="form-control" name="bookId" required>
-                      </div>
-                      <div class="col-1">
-                        <button class="btn btn-dark"><i class="fa fa-search" aria-hidden="true"></i></button>
+                      <div class="col">
+                        <input type="text" placeholder="Book Id" formControlName="bookId"  class="form-control" name="bookId" (change)="onCheckBookId()">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <div class="col-10">
-                        <input type="text" placeholder="Book Name" name="bookName" formControlName="bookName" class="form-control" >
+                      <div class="col">
+                        <input type="text" placeholder="Book Name" name="bookName" formControlName="bookName" class="form-control" [value]="bookNameReturn">
                       </div>
-                      <div class="col-2"></div>
                     </div>
 
                     <div class="row mb-3">
-                      <div class="col-10">
-                        <input type="text" placeholder="Author Name" name="authorName" formControlName="authorName" class="form-control" >
+                      <div class="col">
+                        <input type="text" placeholder="Author Name" name="authorName" formControlName="authorName" class="form-control" [value]="authorNameReturn">
                       </div>
-                      <div class="col-2"></div>
                     </div>
 
                     <div class="row mb-3">
-                      <div class="col-10">
-                        <input type="number" placeholder="Publish year" name="publishYear" formControlName="publishYear" class="form-control" >
+                      <div class="col">
+                        <input type="number" placeholder="Publish year" name="publishYear" formControlName="publishYear" class="form-control" [value]="publishedYearReturn">
                       </div>
-                      <div class="col-2"></div>
                     </div>
 
                     <div class="row mb-3">
-                      <div class="col-10">
-                        <input type="number" placeholder="Price" name="price" formControlName="price" class="form-control" >
+                      <div class="col">
+                        <input type="number" placeholder="Price" name="price" formControlName="price" class="form-control" [value]="priceReturn">
                       </div>
-                      <div class="col-2"></div>
                     </div>
 
 

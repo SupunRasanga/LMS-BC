@@ -28,6 +28,17 @@ export class MembersComponent implements OnInit {
   isUpdate:boolean=false;
   selectedId:string;
 
+   //Pass member details to UI
+   memberNameReturn:any;
+   ageReturn:any;
+   genderReturn:any;
+   addressReturn:any;
+   contactNoReturn:any;
+
+   //Check Valid user details
+  isValidMemberId:boolean = false;
+
+
   //Pagination
   collectionSize: number = 0;
   page: number = 1;
@@ -96,6 +107,9 @@ this.memberService.update(this.memberForm.value,this.selectedId).subscribe(res=>
 });
 
   }else{
+  //Check user details valid or not
+  if(this.isValidMemberId==true){
+
 //Save Record
     this.memberService.create(this.memberForm.value).subscribe(res=>{
       this.memberForm.reset();
@@ -108,14 +122,37 @@ this.memberService.update(this.memberForm.value,this.selectedId).subscribe(res=>
     },()=>{
       console.log('completed');
     })
+    }else{
+      alert('This member is already registered');
+      this.memberForm.reset();
     }
   }
+}
     getList():void{
       this.memberService.getAll().subscribe(res => {
         this.memberList = res;
         this.collectionSize = this.memberList.length;
       } );
     }
+
+//Check member availability
+    onCheckMemberId():void{
+      this.memberList.forEach(x => {
+        if(x.memberId == this.memberForm.get('memberId').value){
+          console.log(this.memberForm.get('memberId').value);
+          console.log(x.memberId+"Correct ");
+          console.log(x.memberFullName);
+          this.memberNameReturn = x.memberFullName;
+          this.ageReturn = x.age;
+          this.genderReturn = x.gender;
+          this.addressReturn = x.address;
+          this.contactNoReturn = x.contactNo;
+          this.isValidMemberId = true;
+          this.memberForm.get('memberFullName').setValue(this.memberNameReturn);
+        }
+      });
+  }
+
     onUpdate(member:any):void{
       this.openModal();
       this.isUpdate=true,

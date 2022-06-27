@@ -19,6 +19,7 @@ import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { MembersComponent } from './pages/members/members.component';
 
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -30,7 +31,10 @@ import { MembersComponent } from './pages/members/members.component';
     RouterModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    NgbPaginationModule, NgbAlertModule
+    NgbPaginationModule,
+    NgbAlertModule,
+
+
   ],
   declarations: [
     AppComponent,

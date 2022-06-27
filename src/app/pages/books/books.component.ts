@@ -28,6 +28,16 @@ export class BooksComponent implements OnInit {
   isUpdate:boolean=false;
   selectedId:string;
 
+  //Pass book name and member name in to UI
+  bookNameReturn:any;
+  authorNameReturn:any;
+  publishedYearReturn:any;
+  priceReturn:any;
+
+  //Check Valid user details
+  isValidBookId:boolean = true;
+
+
   //Pagination
   collectionSize: number = 0;
   page: number = 1;
@@ -94,20 +104,28 @@ this.bookService.update(this.bookForm.value,this.selectedId).subscribe(res=>{
 });
 
   }else{
-//Save Record
-    this.bookService.create(this.bookForm.value).subscribe(res=>{
+
+//Check user details valid or not
+  if(this.isValidBookId == true){
+  //Save Record
+      this.bookService.create(this.bookForm.value).subscribe(res=>{
+        this.bookForm.reset();
+        this.getList();
+        this.loading.next(false);
+      },error =>{
+        //alert('Error occured when saving data.\n' + error);
+        alert('This Book already exist');
+        this.bookForm.reset();
+      },()=>{
+        console.log('completed');
+      })
+    }else{
+      alert('This book is already registered');
       this.bookForm.reset();
-      this.getList();
-      this.loading.next(false);
-    },error =>{
-      //alert('Error occured when saving data.\n' + error);
-      alert('This Book already exist');
-      this.bookForm.reset();
-    },()=>{
-      console.log('completed');
-    })
     }
   }
+  }
+
     getList():void{
       this.bookService.getAll().subscribe(res => {
         this.bookList = res;
@@ -126,6 +144,25 @@ this.bookService.update(this.bookForm.value,this.selectedId).subscribe(res=>{
         price:book.price,
       });
     }
+
+  //Check user input bookId availability
+  onCheckBookId():void{
+    this.bookList.forEach(x => {
+      if(x.bookId == this.bookForm.get('bookId').value){
+        console.log(x.bookId+"Correct ");
+        console.log(x.bookName);
+        this.bookNameReturn = x.bookName;
+        this.authorNameReturn = x.authorName;
+        this.publishedYearReturn = x.publishYear;
+        this.priceReturn = x.price;
+        this.isValidBookId = false;
+        this.bookForm.get('bookName').setValue(this.bookNameReturn);
+        this.bookForm.get('authorName').setValue(this.authorNameReturn);
+        this.bookForm.get('publishYear').setValue(this.publishedYearReturn);
+        this.bookForm.get('price').setValue(this.priceReturn);
+      }
+    });
+}
 
 onDelete(id:string):void{
   let isConfirm : boolean=confirm('Are you want to delete this Record?');
