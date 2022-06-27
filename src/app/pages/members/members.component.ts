@@ -37,7 +37,8 @@ export class MembersComponent implements OnInit {
 
    //Check Valid user details
   isValidMemberId:boolean = false;
-
+  isMaleGender:any;
+  isFemaleGender:any;
 
   //Pagination
   collectionSize: number = 0;
@@ -147,8 +148,21 @@ this.memberService.update(this.memberForm.value,this.selectedId).subscribe(res=>
           this.genderReturn = x.gender;
           this.addressReturn = x.address;
           this.contactNoReturn = x.contactNo;
-          this.isValidMemberId = true;
+          this.isValidMemberId = false;
           this.memberForm.get('memberFullName').setValue(this.memberNameReturn);
+          this.memberForm.get('age').setValue(this.ageReturn);
+          this.memberForm.get('gender').setValue(this.genderReturn);
+          this.memberForm.get('address').setValue(this.addressReturn);
+          this.memberForm.get('contactNo').setValue(this.contactNoReturn);
+          console.log(this.genderReturn);
+
+          if(this.genderReturn=='Male'){
+              this.isMaleGender = 'clicked';
+              this.isFemaleGender = ''
+          }else{
+            this.isFemaleGender = 'clicked'
+            this.isMaleGender = '';
+          }
         }
       });
   }
