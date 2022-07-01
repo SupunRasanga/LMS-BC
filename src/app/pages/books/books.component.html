@@ -236,9 +236,9 @@
                 <td>{{item.bookName}}</td>
                 <td>{{item.authorName}}</td>
                 <td>{{item.publishYear}}</td>
-                <td>{{item.price}}</td>
+                <td>{{item.price|currency: 'Rs.'}}</td>
                 <td>
-                  <button type="button" class="btn btn-success mr-2" (click)="onUpdate(item)">U</button>
+                  <button type="button" class="btn btn-success " (click)="onUpdate(item)">U</button>
                   <button type="button" class="btn btn-danger" (click)="onDelete(item.id)">D</button>
                 </td>
             </tr>
@@ -608,3 +608,4 @@
     </div>
   </div>
 </div> -->
+

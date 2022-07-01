@@ -99,7 +99,20 @@
       <div class="card bg-default shadow mt--5">
         <div class="card-header bg-transparent border-0">
           <h3 class="text-white mb-0 float-left">Issued Books Details</h3>
-          <button type="button" class="btn btn-info  float-right btn-danger" (click)="openModal()">Issue Book</button>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5">
+              <div class="input-group rounded">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+
+              </div>
+            </div>
+            <div class="col-2"></div>
+            <button type="button" class="btn btn-info  float-right btn-facebook" (click)="openModal()">Issue Book</button>
+            <button type="button" class="btn btn-info  float-right btn-danger" (click)="openModal()">Return Book</button>
+            <div class="col-1">
+          </div>
+        </div>
         </div>
 
 
@@ -155,7 +168,7 @@
                     </div>
                       </div>
                       <div class="modal-footer">
-                            <button type="submit" class="btn btn-success" [disabled]="(loading$ | async)"><i *ngIf="(loading$ |async)" class="fa fa-spinner fa-spin"></i>{{isUpdate ? 'Update': 'Register'}}</button>
+                            <button type="submit" class="btn btn-success" [disabled]="(loading$ | async)"><i *ngIf="(loading$ |async)" class="fa fa-spinner fa-spin"></i>{{isUpdate ? 'Update': 'Issue'}}</button>
                             <button type="button" class="btn btn-danger" (click)="onCloseHandled()" >Close</button>
                       </div>
                   </form>
@@ -166,7 +179,7 @@
 
 
         <div class="table-responsive">
-          <table class="table align-items-center table-dark table-flush">
+          <table class="table align-items-center table-dark table-flush" id="dtBasicExample">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Book Id</th>
@@ -246,7 +259,7 @@
                 <td>{{item.issueDate}}</td>
                 <td>{{item.dueDate}}</td>
                 <td>
-                  <button type="button" class="btn btn-success mr-2" (click)="onUpdate(item)">U</button>
+                  <button type="button" class="btn btn-success " (click)="onUpdate(item)">U</button>
                   <button type="button" class="btn btn-danger" (click)="onDelete(item.id)">R</button>
                 </td>
             </tr>
@@ -299,6 +312,9 @@
       </div>
     </div>
   </div>
+
+
+
   <!-- Dark table -->
   <!-- <div class="row mt-5">
     <div class="col">

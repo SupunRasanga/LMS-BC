@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -10,7 +11,6 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class BooksComponent implements OnInit {
   display = "none";
-
   date1 = new Date();
 
   currentYear = this.date1.getUTCFullYear();
@@ -130,6 +130,7 @@ this.bookService.update(this.bookForm.value,this.selectedId).subscribe(res=>{
       this.bookService.getAll().subscribe(res => {
         this.bookList = res;
         this.collectionSize = this.bookList.length;
+        console.log(this.bookList);
       } );
     }
     onUpdate(book:any):void{

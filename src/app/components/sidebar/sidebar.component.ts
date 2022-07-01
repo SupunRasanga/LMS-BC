@@ -10,13 +10,11 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/availability', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/availability', title: 'Check Availability',  icon: 'ni-tv-2 text-primary', class: '' },
-    { path: '/issue', title: 'Issue Book',  icon:'ni-planet text-blue', class: '' },
-    { path: '/return', title: 'Return Book',  icon:'ni-pin-3 text-orange', class: '' },
-    { path: '/books', title: 'Books',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/members', title: 'Members',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
-    { path: '/register', title: 'Logout',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/issue', title: 'Issue Book',  icon:'fa-solid fa-server text-blue', class: '' },
+    { path: '/books', title: 'Books',  icon:'fa-solid fa-book text-pink', class: '' },
+    { path: '/members', title: 'Members',  icon:'ni-single-02 text-green', class: '' },
+    { path: '/user-profile', title: 'User profile',  icon:'fa-solid fa-id-card text-yellow', class: '' },
+    { path: '/register', title: 'Logout',  icon:'ni-circle-08 text-red', class: '' }
 
 
 
